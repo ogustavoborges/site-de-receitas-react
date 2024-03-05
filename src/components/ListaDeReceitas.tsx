@@ -1,6 +1,6 @@
 import CaixaReceita, { Receita } from "./CaixaReceita";
 
-function ListaDeReceitas(props) {
+function ListaDeReceitas(props: { receitas: any; }) {
     const { receitas } = props;
 
     return (

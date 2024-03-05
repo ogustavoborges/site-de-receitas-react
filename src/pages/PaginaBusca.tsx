@@ -3,26 +3,26 @@ import CaixaDeBusca from "../components/CaixaDeBusca";
 import TituloPagina from "../components/TituloPagina";
 import ListaDeReceitas from "../components/ListaDeReceitas";
 import todasReceitas from "../data/foods.json";
-import { Receita } from "../components/CaixaReceita";
 
 function PaginaBusca() {
     const [filtro, definirFiltro] = useState("");
 
-    function aplicarCriteriosDeBusca({
-    title,
-    category,
-    }: Receita) {
-    return (
-    valorContemTextoFiltro(title) ||
-    valorContemTextoFiltro(category));
+    const aplicarCriteriosDeBusca =  ({title,category}: {title: string; category: string; }) => {
+        return (
+            valorContemTextoFiltro(title) ||
+            valorContemTextoFiltro(category)
+        );
     }
 
     function valorContemTextoFiltro(valor: string) {
         return valor.toLowerCase().includes(filtro.toLowerCase());
     }
 
-    const receitasFiltradas = todasReceitas.filter(aplicarCriteriosDeBusca);
 
+    const receitasFiltradas = todasReceitas.filter(({ title, category }: {title: string; category: string; }) => {
+        aplicarCriteriosDeBusca({ title, category })
+    });
+    
     return (
     <>
     <TituloPagina>Buscar</TituloPagina>

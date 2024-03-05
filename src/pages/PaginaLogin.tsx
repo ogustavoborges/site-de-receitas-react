@@ -3,6 +3,7 @@ import TituloPagina from "../components/TituloPagina";
 
 function PaginaLogin() {
   const navigate = useNavigate();
+
   function chamarApi(usuario: string, senha: string) {
     // apenas para desmontração, em uma aplicação real jamais essa verificação ficaria no frontend:
     if (usuario === "admin" && senha === "123") return navigate("/");
@@ -10,10 +11,10 @@ function PaginaLogin() {
     alert("Usuário e/ou senha inválidos. Tente novamente.");
   }
 
-  function aoEnviar(event) {
+  function aoEnviar(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const user = event.target[0].value;
-    const senha = event.target[1].value;
+    const user = event.currentTarget.usuario.value;
+    const senha = event.currentTarget.senha.value;
     chamarApi(user, senha);
   }
 

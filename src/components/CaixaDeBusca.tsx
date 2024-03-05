@@ -1,4 +1,4 @@
-function CaixaDeBusca(props) {
+function CaixaDeBusca(props: { busca: any; definirBusca: any; }) {
     const { busca, definirBusca } = props;
     return (
     <>

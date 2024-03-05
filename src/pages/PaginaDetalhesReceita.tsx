@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import receitas from "../data/foods.json";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import TituloPagina from "../components/TituloPagina";
 
 function PaginaDetalhesReceita() {
@@ -11,9 +11,10 @@ function PaginaDetalhesReceita() {
   // ao montar, e ao ser desmontado
   useEffect(() => {
     document.title = receita.title;
-    return () => (document.title = "");
+    return () => {
+      document.title = "";
+    };
   }, []);
-  let teste;
   return (
     <section>
       <Link to={"/"}>‹ Todas as Receitas</Link>
